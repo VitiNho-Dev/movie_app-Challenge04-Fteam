@@ -1,11 +1,13 @@
 class Movie {
   final String originalTitle;
-  final double popularity;
+  final String posterPath;
+  final double voteAverage;
   final List<int> genres;
 
   Movie({
     required this.originalTitle,
-    required this.popularity,
+    required this.posterPath,
+    required this.voteAverage,
     required this.genres,
   });
 }
