@@ -18,6 +18,7 @@ class CustomAppBarDetailsPage extends StatelessWidget
         Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
+              tileMode: TileMode.decal,
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [

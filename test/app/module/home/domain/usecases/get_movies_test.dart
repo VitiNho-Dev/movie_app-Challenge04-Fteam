@@ -12,10 +12,12 @@ void main() {
 
   final movie = [
     Movie(
-      originalTitle: 'Fight Club',
+      title: 'Fight Club',
       voteAverage: 61.467,
       posterPath: '',
       backdropPath: '',
+      overview: '',
+      releaseDate: '',
       genres: [],
     ),
   ];

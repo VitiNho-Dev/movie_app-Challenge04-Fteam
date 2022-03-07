@@ -49,6 +49,19 @@ class CustomCardMovie extends StatelessWidget {
                       ),
                       child: Image.network(
                         'https://image.tmdb.org/t/p/original$image',
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress?.cumulativeBytesLoaded ==
+                              loadingProgress?.expectedTotalBytes) {
+                            return child;
+                          }
+                          return const SizedBox(
+                            height: 50,
+                            width: 50,
+                            child: Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                          );
+                        },
                       ),
                     ),
                     const SizedBox(width: 12),
