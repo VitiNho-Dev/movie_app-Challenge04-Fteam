@@ -49,20 +49,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ],
             ),
             Row(
-              children: [
-                const Icon(
+              children: const [
+                Icon(
                   Icons.search,
                   color: Colors.white,
                 ),
-                const SizedBox(width: 12),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Icon(
-                      Icons.drag_handle,
-                      color: Colors.white,
-                    ),
-                  ],
+                SizedBox(width: 12),
+                Icon(
+                  Icons.drag_handle,
+                  color: Colors.white,
                 ),
               ],
             ),
@@ -73,5 +68,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size(double.infinity, 78);
+  Size get preferredSize => const Size(double.infinity, 56);
 }

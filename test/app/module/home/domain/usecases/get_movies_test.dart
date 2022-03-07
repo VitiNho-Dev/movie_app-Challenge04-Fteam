@@ -15,6 +15,7 @@ void main() {
       originalTitle: 'Fight Club',
       voteAverage: 61.467,
       posterPath: '',
+      backdropPath: '',
       genres: [],
     ),
   ];

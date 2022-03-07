@@ -21,8 +21,8 @@ class CustomListGenre extends StatelessWidget {
       builder: (context, active, child) {
         return InkWell(
           onTap: () {
-            store.getMovieFiltered(genre.id);
             controller.changeColor;
+            store.getMovieFiltered(genre.id);
           },
           child: Container(
             margin: const EdgeInsets.all(8),

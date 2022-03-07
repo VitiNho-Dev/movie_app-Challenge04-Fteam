@@ -13,6 +13,7 @@ class HomeStore extends NotifierStore<Exception, HomeState> {
     setLoading(true);
     try {
       final response = await movieUsecase();
+      Future.delayed(const Duration(seconds: 2));
       update(state.copyWith(
         listMovies: response,
         listMoviesFiltered: response,
@@ -26,6 +27,7 @@ class HomeStore extends NotifierStore<Exception, HomeState> {
   Future<void> getMovieFiltered(int id) async {
     setLoading(true);
     try {
+      Future.delayed(const Duration(seconds: 2));
       final listFiltered = state.listMovies.where(
         (element) => element.genres.contains(id),
       );
@@ -42,6 +44,7 @@ class HomeStore extends NotifierStore<Exception, HomeState> {
     setLoading(true);
     try {
       final response = await genreUsecase();
+      Future.delayed(const Duration(seconds: 2));
       update(state.copyWith(listGenre: response));
     } on Exception catch (e) {
       setError(e);

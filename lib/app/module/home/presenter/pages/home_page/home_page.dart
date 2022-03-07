@@ -36,12 +36,14 @@ class _HomePageState extends State<HomePage> {
       appBar: const CustomAppBar(),
       body: ScopedBuilder(
         store: store,
+        onLoading: (context) =>
+            const Center(child: CircularProgressIndicator()),
         onState: (context, HomeState state) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
                 child: Text(
                   'Categories',
                   style: TextStyle(
@@ -53,30 +55,35 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 8),
               Expanded(
                 flex: 1,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: state.listMoviesFiltered.length,
-                  itemBuilder: (context, index) {
-                    var genre = state.listGenre[index];
-                    return CustomListGenre(
-                      store: store,
-                      genre: genre,
-                    );
-                  },
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 4.0),
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: state.listGenre.length,
+                    itemBuilder: (context, index) {
+                      var genre = state.listGenre[index];
+                      return CustomListGenre(
+                        store: store,
+                        genre: genre,
+                      );
+                    },
+                  ),
                 ),
               ),
               const SizedBox(height: 8),
               Expanded(
                 flex: 9,
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding:
+                      const EdgeInsets.only(left: 12.0, top: 8.0, right: 12.0),
                   child: ListView.builder(
-                    itemCount: state.listMovies.length,
+                    itemCount: state.listMoviesFiltered.length,
                     itemBuilder: (context, index) {
-                      var image = state.listMovies[index].posterPath;
-                      var name = state.listMovies[index].originalTitle;
-                      var vote = state.listMovies[index].voteAverage;
+                      var image = state.listMoviesFiltered[index].posterPath;
+                      var name = state.listMoviesFiltered[index].title;
+                      var vote = state.listMoviesFiltered[index].voteAverage;
                       return CustomCardMovie(
+                        movie: state.listMoviesFiltered[index],
                         image: image,
                         name: name,
                         vote: vote,
@@ -89,7 +96,6 @@ class _HomePageState extends State<HomePage> {
           );
         },
         onError: (context, error) => Text('$error'),
-        onLoading: (context) => const CircularProgressIndicator(),
       ),
     );
   }
