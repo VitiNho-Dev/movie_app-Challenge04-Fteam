@@ -25,7 +25,7 @@ void main() {
           status: 200,
           data: resultMovies),
     );
-    final result = await datasource.getMovieNetwork();
+    final result = await datasource.getMoviesFromNetwork();
     expect(result, isA<List<Movie>>());
   });
 }

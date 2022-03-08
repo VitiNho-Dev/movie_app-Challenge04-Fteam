@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:movie_app/app/module/home/domain/entities/movie.dart';
 
+import 'package:movie_app/app/module/home/domain/entities/movie.dart';
 import 'package:movie_app/app/module/home/presenter/pages/home_page/controllers/change_color.dart';
 
 class CustomCardMovie extends StatelessWidget {
@@ -11,12 +11,14 @@ class CustomCardMovie extends StatelessWidget {
     required this.name,
     required this.vote,
     required this.movie,
+    this.height = 130,
   }) : super(key: key);
 
   final String image;
   final String name;
   final double vote;
   final Movie movie;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class CustomCardMovie extends StatelessWidget {
           },
           child: Container(
             width: double.infinity,
-            height: 130,
+            height: height,
             margin: const EdgeInsets.symmetric(vertical: 4),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
@@ -88,23 +90,19 @@ class CustomCardMovie extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    active
-                        ? IconButton(
-                            onPressed: controller.changeColor,
-                            padding: EdgeInsets.zero,
-                            icon: const Icon(
+                    IconButton(
+                      onPressed: controller.changeColor,
+                      padding: EdgeInsets.zero,
+                      icon: active
+                          ? const Icon(
                               Icons.favorite,
                               color: Colors.white,
-                            ),
-                          )
-                        : IconButton(
-                            onPressed: controller.changeColor,
-                            padding: EdgeInsets.zero,
-                            icon: const Icon(
+                            )
+                          : const Icon(
                               Icons.favorite_border,
                               color: Colors.white,
                             ),
-                          ),
+                    ),
                     const SizedBox(height: 8),
                     Container(
                       padding: const EdgeInsets.symmetric(

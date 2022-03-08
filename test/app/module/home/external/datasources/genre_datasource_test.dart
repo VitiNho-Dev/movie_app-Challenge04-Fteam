@@ -25,7 +25,7 @@ void main() {
           status: 200,
           data: resultGenre),
     );
-    final result = await datasource.getGenreNetwork();
+    final result = await datasource.getGenresFromNetwork();
     expect(result, isA<List<Genre>>());
   });
 }

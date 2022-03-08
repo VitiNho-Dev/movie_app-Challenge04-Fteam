@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:movie_app/app/module/home/domain/entities/movie.dart';
-import 'package:movie_app/app/module/home/infra/datasources/movie_idatasource.dart';
+import 'package:movie_app/app/module/home/infra/datasources/i_movie_datasource.dart';
 import 'package:movie_app/app/module/home/infra/repositories/movie_repository.dart';
 
 class MovieDatasourceMock extends Mock implements IMovieDatasource {}
@@ -14,7 +14,7 @@ void main() {
   final List<Movie> movieMapper = [MovieMapperMock()];
 
   test('Deve retornar uma lista de filmes', () async {
-    when(() => datasource.getMovieNetwork())
+    when(() => datasource.getMoviesFromNetwork())
         .thenAnswer((invocation) async => movieMapper);
     final result = await repository.pickUpMovies();
     expect(result, isA<List<Movie>>());

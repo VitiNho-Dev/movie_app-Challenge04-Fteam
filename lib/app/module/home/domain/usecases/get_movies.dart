@@ -1,5 +1,5 @@
 import 'package:movie_app/app/module/home/domain/entities/movie.dart';
-import 'package:movie_app/app/module/home/domain/repositories/movie_irepository.dart';
+import 'package:movie_app/app/module/home/domain/repositories/i_movie_repository.dart';
 
 abstract class IGetMovieUsecase {
   Future<List<Movie>> call();

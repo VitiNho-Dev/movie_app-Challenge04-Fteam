@@ -1,6 +1,6 @@
 import 'package:movie_app/app/module/home/domain/entities/movie.dart';
-import 'package:movie_app/app/module/home/domain/repositories/movie_irepository.dart';
-import 'package:movie_app/app/module/home/infra/datasources/movie_idatasource.dart';
+import 'package:movie_app/app/module/home/domain/repositories/i_movie_repository.dart';
+import 'package:movie_app/app/module/home/infra/datasources/i_movie_datasource.dart';
 
 class MovieRepository implements IMovieRepository {
   final IMovieDatasource datasource;
@@ -8,6 +8,6 @@ class MovieRepository implements IMovieRepository {
 
   @override
   Future<List<Movie>> pickUpMovies() {
-    return datasource.getMovieNetwork();
+    return datasource.getMoviesFromNetwork();
   }
 }

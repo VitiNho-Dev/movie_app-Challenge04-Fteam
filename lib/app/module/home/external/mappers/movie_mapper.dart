@@ -1,18 +1,6 @@
 import 'package:movie_app/app/module/home/domain/entities/movie.dart';
 
 class MovieMapper {
-  static Map<String, dynamic> toMap(Movie movie) {
-    return {
-      "title": movie.title,
-      "poster_path": movie.posterPath,
-      "backdrop_path": movie.backdropPath,
-      "overview": movie.overview,
-      "release_date": movie.releaseDate,
-      "vote_average": movie.voteAverage,
-      "genre_ids": [],
-    };
-  }
-
   static Movie fromMap(Map<String, dynamic> json) {
     return Movie(
       title: json['title'] ?? '',

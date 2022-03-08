@@ -5,7 +5,7 @@ import 'package:movie_app/app/module/home/presenter/pages/home_page/triple/home_
 import 'package:movie_app/app/module/home/presenter/pages/home_page/triple/home_store.dart';
 import 'package:movie_app/app/module/home/presenter/pages/home_page/widgets/custom_app_bar.dart';
 import 'package:movie_app/app/module/home/presenter/pages/home_page/widgets/custom_card_movie.dart';
-import 'package:movie_app/app/module/home/presenter/pages/home_page/widgets/custom_list_genre.dart';
+import 'package:movie_app/app/module/home/presenter/pages/home_page/widgets/custom_list_genre_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
