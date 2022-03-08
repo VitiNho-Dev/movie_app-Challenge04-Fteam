@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:movie_app/app/module/home/domain/entities/movie.dart';
+import 'package:movie_app/app/module/home/domain/entities/movie_entity.dart';
 import 'package:movie_app/app/module/home/external/datasources/movie_datasource.dart';
 import 'package:movie_app/app/shared/services/http_iclient.dart';
 import 'package:uno/uno.dart';

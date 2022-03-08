@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:movie_app/app/module/home/domain/entities/movie.dart';
+import 'package:movie_app/app/module/home/domain/entities/movie_entity.dart';
 import 'package:movie_app/app/module/home/infra/datasources/i_movie_datasource.dart';
 import 'package:movie_app/app/module/home/infra/repositories/movie_repository.dart';
 

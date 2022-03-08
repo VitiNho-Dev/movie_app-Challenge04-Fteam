@@ -1,4 +1,4 @@
-import 'package:movie_app/app/module/home/domain/entities/genre.dart';
+import 'package:movie_app/app/module/home/domain/entities/genre_entity.dart';
 
 class GenreMapper {
   static Genre fromMap(Map<String, dynamic> json) {

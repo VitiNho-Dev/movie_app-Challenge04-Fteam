@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:movie_app/app/module/home/domain/entities/genre.dart';
+import 'package:movie_app/app/module/home/domain/entities/genre_entity.dart';
 import 'package:movie_app/app/module/home/infra/datasources/i_genre_datasource.dart';
 import 'package:movie_app/app/module/home/infra/repositories/genre_repository.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'package:movie_app/app/module/home/domain/entities/movie.dart';
+import 'package:movie_app/app/module/home/domain/entities/movie_entity.dart';
 import 'package:movie_app/app/module/home/presenter/pages/home_page/controllers/change_color.dart';
 
 class CustomCardMovie extends StatelessWidget {

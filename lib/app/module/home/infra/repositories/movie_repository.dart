@@ -1,4 +1,4 @@
-import 'package:movie_app/app/module/home/domain/entities/movie.dart';
+import 'package:movie_app/app/module/home/domain/entities/movie_entity.dart';
 import 'package:movie_app/app/module/home/domain/repositories/i_movie_repository.dart';
 import 'package:movie_app/app/module/home/infra/datasources/i_movie_datasource.dart';
 

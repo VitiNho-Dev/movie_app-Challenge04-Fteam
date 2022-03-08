@@ -1,5 +1,5 @@
-import 'package:movie_app/app/module/home/domain/entities/genre.dart';
-import 'package:movie_app/app/module/home/domain/entities/movie.dart';
+import 'package:movie_app/app/module/home/domain/entities/genre_entity.dart';
+import 'package:movie_app/app/module/home/domain/entities/movie_entity.dart';
 
 class HomeState {
   final List<Movie> listMovies;

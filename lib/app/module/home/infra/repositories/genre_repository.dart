@@ -1,5 +1,5 @@
-import 'package:movie_app/app/module/home/domain/entities/genre.dart';
-import 'package:movie_app/app/module/home/domain/repositories/genre_irepository.dart';
+import 'package:movie_app/app/module/home/domain/entities/genre_entity.dart';
+import 'package:movie_app/app/module/home/domain/repositories/i_genre_repository.dart';
 import 'package:movie_app/app/module/home/infra/datasources/i_genre_datasource.dart';
 
 class GenreRepository implements IGenreRepository {

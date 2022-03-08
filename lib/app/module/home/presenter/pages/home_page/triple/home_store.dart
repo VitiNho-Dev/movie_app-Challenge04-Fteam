@@ -1,7 +1,7 @@
 import 'package:flutter_triple/flutter_triple.dart';
-import 'package:movie_app/app/module/home/domain/entities/genre.dart';
-import 'package:movie_app/app/module/home/domain/usecases/get_genre.dart';
-import 'package:movie_app/app/module/home/domain/usecases/get_movies.dart';
+import 'package:movie_app/app/module/home/domain/entities/genre_entity.dart';
+import 'package:movie_app/app/module/home/domain/usecases/get_genre_usecase.dart';
+import 'package:movie_app/app/module/home/domain/usecases/get_movies_usecase.dart';
 import 'package:movie_app/app/module/home/presenter/pages/home_page/triple/home_state.dart';
 
 class HomeStore extends NotifierStore<Exception, HomeState> {

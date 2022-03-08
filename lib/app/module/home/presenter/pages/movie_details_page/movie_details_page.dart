@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/app/module/home/domain/entities/movie.dart';
+import 'package:movie_app/app/module/home/domain/entities/movie_entity.dart';
 import 'package:movie_app/app/module/home/presenter/pages/movie_details_page/widgets/custom_app_bar.dart';
 
 class MovieDetailPage extends StatelessWidget {
@@ -65,7 +65,7 @@ class MovieDetailPage extends StatelessWidget {
               ),
               const SizedBox(height: 36),
               Text(
-                '${detailMovie.overview} alsklakslakaksasaj jakjskajsak jkasjkajs kjksajskajskajska kjkajskasjaksjaksjaksjaksja jkjsakjskasa lkflkdlkfldkfdkfkldkfd lkfldkfldklfkdlfkldkfldkfldk lkfldkfldkfldkf kldklfkdlkfldkfldklfkdlkfldkfldklfkdlkfdkfldklfdklfldkdlfkldkfld lkfldklfkdlfdlkfdl kdlkfldkfldkfldk lfldkfdklfkdlkflkldklfdfkldkfldfkdldkldkfl kldkfkdlfkldfkldkfdl ',
+                '${detailMovie.overview}',
                 style: const TextStyle(
                   color: Colors.white,
                 ),

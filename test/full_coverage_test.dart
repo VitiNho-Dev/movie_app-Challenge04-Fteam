@@ -1,10 +1,10 @@
 // ignore_for_file: unused_import
-import 'package:movie_app/app/module/home/domain/entities/genre.dart';
-import 'package:movie_app/app/module/home/domain/entities/movie.dart';
-import 'package:movie_app/app/module/home/domain/repositories/genre_irepository.dart';
+import 'package:movie_app/app/module/home/domain/entities/genre_entity.dart';
+import 'package:movie_app/app/module/home/domain/entities/movie_entity.dart';
+import 'package:movie_app/app/module/home/domain/repositories/i_genre_repository.dart';
 import 'package:movie_app/app/module/home/domain/repositories/i_movie_repository.dart';
-import 'package:movie_app/app/module/home/domain/usecases/get_genre.dart';
-import 'package:movie_app/app/module/home/domain/usecases/get_movies.dart';
+import 'package:movie_app/app/module/home/domain/usecases/get_genre_usecase.dart';
+import 'package:movie_app/app/module/home/domain/usecases/get_movies_usecase.dart';
 import 'package:movie_app/app/module/home/external/datasources/genre_datasource.dart';
 import 'package:movie_app/app/module/home/external/datasources/movie_datasource.dart';
 import 'package:movie_app/app/module/home/external/mappers/genre_mapper.dart';

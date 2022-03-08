@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:movie_app/app/module/home/domain/entities/movie.dart';
+import 'package:movie_app/app/module/home/domain/entities/movie_entity.dart';
 import 'package:movie_app/app/module/home/domain/repositories/i_movie_repository.dart';
-import 'package:movie_app/app/module/home/domain/usecases/get_movies.dart';
+import 'package:movie_app/app/module/home/domain/usecases/get_movies_usecase.dart';
 
 class RepositoryMock extends Mock implements IMovieRepository {}
 

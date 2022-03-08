@@ -1,6 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:movie_app/app/module/home/domain/usecases/get_genre.dart';
-import 'package:movie_app/app/module/home/domain/usecases/get_movies.dart';
+import 'package:movie_app/app/module/home/domain/usecases/get_genre_usecase.dart';
+import 'package:movie_app/app/module/home/domain/usecases/get_movies_usecase.dart';
 import 'package:movie_app/app/module/home/external/datasources/genre_datasource.dart';
 import 'package:movie_app/app/module/home/external/datasources/movie_datasource.dart';
 import 'package:movie_app/app/module/home/infra/repositories/genre_repository.dart';
