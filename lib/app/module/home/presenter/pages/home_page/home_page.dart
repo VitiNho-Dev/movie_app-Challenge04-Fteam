@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_triple/flutter_triple.dart';
-import 'package:movie_app/app/module/home/presenter/pages/home_page/controllers/change_color.dart';
 import 'package:movie_app/app/module/home/presenter/pages/home_page/triple/home_state.dart';
 import 'package:movie_app/app/module/home/presenter/pages/home_page/triple/home_store.dart';
 import 'package:movie_app/app/module/home/presenter/pages/home_page/widgets/custom_app_bar.dart';

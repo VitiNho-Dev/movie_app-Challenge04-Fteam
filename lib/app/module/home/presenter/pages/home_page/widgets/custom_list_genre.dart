@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:movie_app/app/module/home/presenter/pages/home_page/controllers/change_color.dart';
-
 class CustomListGenre extends StatefulWidget {
   const CustomListGenre({
     Key? key,
