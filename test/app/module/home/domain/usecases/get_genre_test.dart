@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:movie_app/app/module/home/domain/entities/genre_entity.dart';
-import 'package:movie_app/app/module/home/domain/repositories/genre_repository.dart';
-import 'package:movie_app/app/module/home/domain/usecases/get_genre_usecase.dart';
+import 'package:movie_app/app/modules/home/domain/entities/genre_entity.dart';
+import 'package:movie_app/app/modules/home/domain/repositories/genre_repository.dart';
+import 'package:movie_app/app/modules/home/domain/usecases/get_genre_usecase.dart';
 
 class RepositoryMock extends Mock implements GenreRepository {}
 

@@ -6,7 +6,7 @@ import 'package:movie_app/app/app_widget.dart';
 void main() {
   runApp(
     ModularApp(
-      module: AppModule(),
+      module: AppModules(),
       child: const AppWidget(),
     ),
   );

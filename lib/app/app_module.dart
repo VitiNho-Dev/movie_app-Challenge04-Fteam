@@ -1,18 +1,18 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:movie_app/app/module/home/domain/usecases/get_genre_usecase.dart';
-import 'package:movie_app/app/module/home/domain/usecases/get_movies_usecase.dart';
-import 'package:movie_app/app/module/home/external/datasources/genre_datasource_impl.dart';
-import 'package:movie_app/app/module/home/external/datasources/movie_datasource_impl.dart';
-import 'package:movie_app/app/module/home/infra/repositories/genre_repository_impl.dart';
-import 'package:movie_app/app/module/home/infra/repositories/movie_repository_impl.dart';
-import 'package:movie_app/app/module/home/presenter/pages/home_page/home_page.dart';
-import 'package:movie_app/app/module/home/presenter/pages/home_page/triple/home_store.dart';
-import 'package:movie_app/app/module/home/presenter/pages/movie_details_page/movie_details_page.dart';
+import 'package:movie_app/app/modules/home/domain/usecases/get_genre_usecase.dart';
+import 'package:movie_app/app/modules/home/domain/usecases/get_movies_usecase.dart';
+import 'package:movie_app/app/modules/home/external/datasources/genre_datasource_impl.dart';
+import 'package:movie_app/app/modules/home/external/datasources/movie_datasource_impl.dart';
+import 'package:movie_app/app/modules/home/infra/repositories/genre_repository_impl.dart';
+import 'package:movie_app/app/modules/home/infra/repositories/movie_repository_impl.dart';
+import 'package:movie_app/app/modules/home/presenter/pages/home_page/home_page.dart';
+import 'package:movie_app/app/modules/home/presenter/pages/home_page/triple/home_store.dart';
+import 'package:movie_app/app/modules/home/presenter/pages/movie_details_page/movie_details_page.dart';
 import 'package:uno/uno.dart';
 
 import 'shared/services/http_client_uno.dart';
 
-class AppModule extends Module {
+class AppModules extends Module {
   @override
   List<Bind<Object>> get binds => [
         Bind.factory((i) => Uno()),
