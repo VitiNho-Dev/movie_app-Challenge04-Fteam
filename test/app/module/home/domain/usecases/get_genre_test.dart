@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:movie_app/app/module/home/domain/entities/genre_entity.dart';
-import 'package:movie_app/app/module/home/domain/repositories/i_genre_repository.dart';
+import 'package:movie_app/app/module/home/domain/repositories/genre_repository.dart';
 import 'package:movie_app/app/module/home/domain/usecases/get_genre_usecase.dart';
 
-class RepositoryMock extends Mock implements IGenreRepository {}
+class RepositoryMock extends Mock implements GenreRepository {}
 
 void main() {
   final repository = RepositoryMock();
@@ -13,7 +13,7 @@ void main() {
   final genre = [
     Genre(
       id: 10,
-      name: "Ação",
+      name: 'Ação',
     ),
   ];
 

@@ -1,17 +1,19 @@
+import 'package:dartz/dartz.dart';
 import 'package:movie_app/app/module/home/domain/entities/movie_entity.dart';
-import 'package:movie_app/app/module/home/domain/repositories/i_movie_repository.dart';
+import 'package:movie_app/app/module/home/domain/errors/failures.dart';
+import 'package:movie_app/app/module/home/domain/repositories/movie_repository.dart';
 
-abstract class IGetMovieUsecase {
-  Future<List<Movie>> call();
+abstract class GetMovieUsecase {
+  Future<Either<Failures, List<Movie>>> call();
 }
 
-class GetMovieUsecase implements IGetMovieUsecase {
-  final IMovieRepository repository;
+class GetMovieUsecaseImpl implements GetMovieUsecase {
+  final MovieRepository repository;
 
-  GetMovieUsecase(this.repository);
+  GetMovieUsecaseImpl(this.repository);
 
   @override
-  Future<List<Movie>> call() async {
-    return repository.pickUpMovies();
+  Future<Either<Failures, List<Movie>>> call() async {
+    return repository.getMovies();
   }
 }

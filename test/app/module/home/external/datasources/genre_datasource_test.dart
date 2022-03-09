@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:movie_app/app/module/home/domain/entities/genre_entity.dart';
-import 'package:movie_app/app/module/home/external/datasources/genre_datasource.dart';
+import 'package:movie_app/app/module/home/external/datasources/genre_datasource_impl.dart';
 import 'package:movie_app/app/shared/services/http_iclient.dart';
 import 'package:uno/uno.dart';
 
@@ -11,7 +11,7 @@ class UnoClientMock extends Mock implements IClient {}
 
 void main() {
   final client = UnoClientMock();
-  final datasource = GenreDatasource(client);
+  final datasource = GenreDatasourceImpl(client);
 
   test('Deve retornar a lista de Generos', () async {
     when(() => client.getNetwork(any())).thenAnswer(

@@ -1,12 +1,12 @@
 import 'package:movie_app/app/module/home/domain/entities/genre_entity.dart';
-import 'package:movie_app/app/module/home/domain/repositories/i_genre_repository.dart';
+import 'package:movie_app/app/module/home/domain/repositories/genre_repository.dart';
 
 abstract class IGetGenreUsecase {
   Future<List<Genre>> call();
 }
 
 class GetGenreUsecase implements IGetGenreUsecase {
-  final IGenreRepository repository;
+  final GenreRepository repository;
 
   GetGenreUsecase(this.repository);
 

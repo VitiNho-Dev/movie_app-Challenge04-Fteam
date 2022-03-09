@@ -8,8 +8,8 @@ class MovieMapper {
       backdropPath: json['backdrop_path'] ?? '',
       overview: json['overview'] ?? '',
       releaseDate: json['release_date'] ?? '',
-      voteAverage: json["vote_average"].toDouble() ?? 0.0,
-      genres: List<int>.from((json["genre_ids"] ?? []).map((x) => x)),
+      voteAverage: json['vote_average'].toDouble() ?? 0.0,
+      genres: List<int>.from((json['genre_ids'] ?? []).map((x) => x)),
     );
   }
 }

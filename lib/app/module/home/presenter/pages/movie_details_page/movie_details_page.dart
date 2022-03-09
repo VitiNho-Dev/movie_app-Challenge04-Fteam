@@ -65,7 +65,7 @@ class MovieDetailPage extends StatelessWidget {
               ),
               const SizedBox(height: 36),
               Text(
-                '${detailMovie.overview}',
+                detailMovie.overview,
                 style: const TextStyle(
                   color: Colors.white,
                 ),

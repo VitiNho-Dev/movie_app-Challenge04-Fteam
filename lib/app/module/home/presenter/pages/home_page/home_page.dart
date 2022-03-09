@@ -55,7 +55,6 @@ class _HomePageState extends State<HomePage> {
               ),
               const SizedBox(height: 8),
               Expanded(
-                flex: 1,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 4.0),
                   child: ListView.builder(

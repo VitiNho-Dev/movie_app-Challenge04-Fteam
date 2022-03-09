@@ -10,7 +10,7 @@ void main() {
   });
 
   test('Deve retornar um success', () {
-    final usecase = Modular.get<IGetMovieUsecase>();
-    expect(usecase, isA<IGetMovieUsecase>());
+    final usecase = Modular.get<GetMovieUsecase>();
+    expect(usecase, isA<GetMovieUsecase>());
   });
 }

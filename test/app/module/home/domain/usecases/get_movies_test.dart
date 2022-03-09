@@ -1,14 +1,15 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:movie_app/app/module/home/domain/entities/movie_entity.dart';
-import 'package:movie_app/app/module/home/domain/repositories/i_movie_repository.dart';
+import 'package:movie_app/app/module/home/domain/repositories/movie_repository.dart';
 import 'package:movie_app/app/module/home/domain/usecases/get_movies_usecase.dart';
 
-class RepositoryMock extends Mock implements IMovieRepository {}
+class RepositoryMock extends Mock implements MovieRepository {}
 
 void main() {
   final repository = RepositoryMock();
-  final usecase = GetMovieUsecase(repository);
+  final usecase = GetMovieUsecaseImpl(repository);
 
   final movie = [
     Movie(
@@ -23,8 +24,8 @@ void main() {
   ];
 
   test('Deve trazer uma lista filme', () async {
-    when(() => repository.pickUpMovies())
-        .thenAnswer((invocation) async => movie);
+    when(() => repository.getMovies())
+        .thenAnswer((invocation) async => Right(movie));
     final result = await usecase();
     expect(result, isA<List<Movie>>());
   });

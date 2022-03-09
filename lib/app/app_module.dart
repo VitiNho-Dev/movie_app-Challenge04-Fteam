@@ -1,10 +1,10 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:movie_app/app/module/home/domain/usecases/get_genre_usecase.dart';
 import 'package:movie_app/app/module/home/domain/usecases/get_movies_usecase.dart';
-import 'package:movie_app/app/module/home/external/datasources/genre_datasource.dart';
-import 'package:movie_app/app/module/home/external/datasources/movie_datasource.dart';
-import 'package:movie_app/app/module/home/infra/repositories/genre_repository.dart';
-import 'package:movie_app/app/module/home/infra/repositories/movie_repository.dart';
+import 'package:movie_app/app/module/home/external/datasources/genre_datasource_impl.dart';
+import 'package:movie_app/app/module/home/external/datasources/movie_datasource_impl.dart';
+import 'package:movie_app/app/module/home/infra/repositories/genre_repository_impl.dart';
+import 'package:movie_app/app/module/home/infra/repositories/movie_repository_impl.dart';
 import 'package:movie_app/app/module/home/presenter/pages/home_page/home_page.dart';
 import 'package:movie_app/app/module/home/presenter/pages/home_page/triple/home_store.dart';
 import 'package:movie_app/app/module/home/presenter/pages/movie_details_page/movie_details_page.dart';
@@ -17,12 +17,12 @@ class AppModule extends Module {
   List<Bind<Object>> get binds => [
         Bind.factory((i) => Uno()),
         Bind.factory((i) => MovieClientUno(i())),
-        Bind.factory((i) => GetMovieUsecase(i())),
+        Bind.factory((i) => GetMovieUsecaseImpl(i())),
         Bind.factory((i) => GetGenreUsecase(i())),
-        Bind.factory((i) => MovieDatasource(i())),
-        Bind.factory((i) => GenreDatasource(i())),
-        Bind.factory((i) => MovieRepository(i())),
-        Bind.factory((i) => GenreRepository(i())),
+        Bind.factory((i) => MovieDatasourceImpl(i())),
+        Bind.factory((i) => GenreDatasourceImpl(i())),
+        Bind.factory((i) => MovieRepositoryImpl(i())),
+        Bind.factory((i) => GenreRepositoryImpl(i())),
         Bind.factory((i) => HomeStore(i(), i())),
       ];
 
