@@ -13,7 +13,7 @@ void main() {
   final client = UnoClientMock();
   final datasource = MovieDatasourceImpl(client);
 
-  test('deve retornar a lista de filmes', () async {
+  test('deve conectar a API e retornar a lista de filmes', () async {
     when((() => client.getNetwork(any()))).thenAnswer(
       (_) async => Response(
           headers: {},

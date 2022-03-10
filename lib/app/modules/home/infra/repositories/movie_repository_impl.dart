@@ -9,7 +9,7 @@ class MovieRepositoryImpl implements MovieRepository {
   MovieRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<Failures, List<Movie>>> getMovies() {
-    return datasource.getMoviesFromNetwork();
+  Future<Either<Failures, List<Movie>>> getMovies() async {
+    return await datasource.getMoviesFromNetwork();
   }
 }

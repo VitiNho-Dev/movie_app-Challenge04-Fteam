@@ -1,9 +1,9 @@
-abstract class Failures implements Exception {}
+abstract class Failures {}
 
-class InvalidTextError implements Failures {
-  final String messageError;
+class MovieDatasourceNoInternetConnection implements Failures {
+  final String message;
 
-  InvalidTextError({this.messageError = ''});
+  MovieDatasourceNoInternetConnection({
+    this.message = 'Sem conexão',
+  });
 }
-
-class DatasourceConnect implements Failures {}

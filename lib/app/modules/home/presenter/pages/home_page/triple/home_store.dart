@@ -13,9 +13,10 @@ class HomeStore extends NotifierStore<Failures, HomeState> {
 
   Future<void> getMovie() async {
     setLoading(true);
+    await Future.delayed(const Duration(seconds: 10));
     final response = await movieUsecase();
     response.fold(
-      (l) => setError(InvalidTextError()),
+      (l) => setError(MovieDatasourceNoInternetConnection()),
       (r) {
         update(state.copyWith(
           listMovies: r,
@@ -23,7 +24,6 @@ class HomeStore extends NotifierStore<Failures, HomeState> {
         ));
       },
     );
-
     setLoading(false);
   }
 
@@ -44,20 +44,36 @@ class HomeStore extends NotifierStore<Failures, HomeState> {
         listMoviesFiltered: listFiltered.toList(),
       ));
     } on Failures catch (e) {
-      setError(InvalidTextError(messageError: e.toString()));
+      setError(MovieDatasourceNoInternetConnection(
+        message: e.toString(),
+      ));
     }
     setLoading(false);
   }
 
   Future<void> getGenre() async {
     setLoading(true);
+    await Future.delayed(const Duration(seconds: 10));
     try {
       final response = await genreUsecase();
       update(
           state.copyWith(listGenre: [Genre(id: -1, name: 'All'), ...response]));
     } on Failures catch (e) {
-      setError(InvalidTextError(messageError: e.toString()));
+      setError(MovieDatasourceNoInternetConnection(
+        message: e.toString(),
+      ));
     }
+    setLoading(false);
+  }
+
+  Future<void> searchMovie(String text) async {
+    setLoading(true);
+    final response = await movieUsecase();
+    final result = response.map((e) => e);
+    final movie = response.fold(
+      (l) => MovieDatasourceNoInternetConnection(),
+      (r) => result,
+    );
     setLoading(false);
   }
 }

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_triple/flutter_triple.dart';
+import 'package:movie_app/app/modules/home/domain/errors/failures.dart';
 import 'package:movie_app/app/modules/home/presenter/pages/home_page/triple/home_state.dart';
 import 'package:movie_app/app/modules/home/presenter/pages/home_page/triple/home_store.dart';
 import 'package:movie_app/app/modules/home/presenter/pages/home_page/widgets/custom_app_bar.dart';
 import 'package:movie_app/app/modules/home/presenter/pages/home_page/widgets/custom_card_movie.dart';
 import 'package:movie_app/app/modules/home/presenter/pages/home_page/widgets/custom_list_genre_widget.dart';
+import 'package:movie_app/app/modules/home/presenter/pages/home_page/widgets/custom_shimmer_list_genre_widget.dart';
+import 'package:movie_app/app/modules/home/presenter/pages/home_page/widgets/custom_shimmer_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,11 +26,11 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     store.getMovie();
     store.getGenre();
-    store.observer(
-      onState: (state) => debugPrint('State $state'),
-      onError: (error) => debugPrint('Error $error'),
-      onLoading: (loading) => debugPrint('Loaging $loading'),
-    );
+    // store.observer(
+    //   onState: (state) => debugPrint('State ${store.state}'),
+    //   onError: (error) => debugPrint('Error $error'),
+    //   onLoading: (loading) => debugPrint('Loaging $loading'),
+    // );
   }
 
   @override
@@ -35,10 +38,35 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: const Color(0xff1e2440),
       appBar: const CustomAppBar(),
-      body: ScopedBuilder(
+      body: ScopedBuilder<HomeStore, Failures, HomeState>(
         store: store,
-        onLoading: (context) =>
-            const Center(child: CircularProgressIndicator()),
+        onLoading: (context) => Column(
+          children: [
+            SizedBox(
+              height: 50,
+              child: Row(
+                children: [
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: 5,
+                    itemBuilder: (context, index) =>
+                        const ShimmerListGenreWidget(),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return ShimmerWidget();
+              },
+            ),
+          ],
+        ),
         onState: (context, HomeState state) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,7 +129,7 @@ class _HomePageState extends State<HomePage> {
             ],
           );
         },
-        onError: (context, error) => Text('$error'),
+        onError: (context, error) => Text(error.toString()),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:movie_app/app/modules/home/presenter/pages/movie_details_page/widgets/custom_cached_image_widget.dart';
 
 class CustomAppBarDetailsPage extends StatelessWidget
     implements PreferredSizeWidget {
@@ -14,7 +15,7 @@ class CustomAppBarDetailsPage extends StatelessWidget
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.network(urlImage),
+        CachedImageWidget(urlImage: urlImage),
         Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(

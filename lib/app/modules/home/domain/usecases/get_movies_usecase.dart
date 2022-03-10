@@ -14,6 +14,6 @@ class GetMovieUsecaseImpl implements GetMovieUsecase {
 
   @override
   Future<Either<Failures, List<Movie>>> call() async {
-    return repository.getMovies();
+    return await repository.getMovies();
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:movie_app/app/modules/home/domain/entities/movie_entity.dart';
 import 'package:movie_app/app/modules/home/presenter/pages/home_page/controllers/change_color.dart';
 
@@ -49,19 +49,13 @@ class CustomCardMovie extends StatelessWidget {
                         topLeft: Radius.circular(8),
                         bottomLeft: Radius.circular(8),
                       ),
-                      child: Image.network(
-                        'https://image.tmdb.org/t/p/original$image',
-                        loadingBuilder: (context, child, loadingProgress) {
-                          if (loadingProgress?.cumulativeBytesLoaded ==
-                              loadingProgress?.expectedTotalBytes) {
-                            return child;
-                          }
-                          return const SizedBox(
-                            height: 50,
-                            width: 50,
-                            child: Center(
-                              child: CircularProgressIndicator(),
-                            ),
+                      child: CachedNetworkImage(
+                        imageUrl: 'https://image.tmdb.org/t/p/original$image',
+                        height: 130,
+                        width: 86,
+                        imageBuilder: (context, url) {
+                          return Image(
+                            image: url,
                           );
                         },
                       ),
