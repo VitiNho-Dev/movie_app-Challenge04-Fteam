@@ -14,11 +14,7 @@ class CachedImageWidget extends StatelessWidget {
     return CachedNetworkImage(
       imageUrl: urlImage,
       placeholder: (context, url) {
-        return Container(
-          height: 180,
-          width: double.infinity,
-          color: Colors.grey,
-        );
+        return Container();
       },
     );
   }

@@ -13,6 +13,7 @@ class MovieDetailPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xff1e2440),
       appBar: CustomAppBarDetailsPage(
+        tag: 'item-${detailMovie.id}',
         urlImage:
             'https://image.tmdb.org/t/p/original/${detailMovie.backdropPath}',
       ),

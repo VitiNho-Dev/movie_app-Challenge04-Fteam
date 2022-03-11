@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:movie_app/app/modules/home/domain/entities/genre_entity.dart';
@@ -19,8 +20,8 @@ void main() {
 
   test('Deve retornar uma lista de Generos de Filmes', () async {
     when(() => repository.pickUpGenres())
-        .thenAnswer((invocation) async => genre);
+        .thenAnswer((invocation) async => Right(genre));
     final result = await datasource.call();
-    expect(result, isA<List<Genre>>());
+    expect(result.fold(id, id), isA<List<Genre>>());
   });
 }

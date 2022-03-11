@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({Key? key}) : super(key: key);
+  final void Function(String)? onChanged;
+
+  const CustomAppBar({
+    Key? key,
+    this.onChanged,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,15 +58,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ],
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 40,
               width: 200,
               child: TextField(
+                onChanged: onChanged,
                 cursorHeight: 20,
-                style: TextStyle(
+                style: const TextStyle(
                   color: colorWhite,
                 ),
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'Procurar filme',
                   hintStyle: TextStyle(
                     color: colorWhite,

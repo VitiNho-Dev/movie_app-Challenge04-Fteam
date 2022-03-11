@@ -1,6 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+
 import 'package:movie_app/app/modules/home/domain/entities/movie_entity.dart';
 import 'package:movie_app/app/modules/home/presenter/pages/home_page/controllers/change_color.dart';
 
@@ -12,6 +13,8 @@ class CustomCardMovie extends StatelessWidget {
     required this.vote,
     required this.movie,
     this.height = 130,
+    required this.tag,
+    this.onTap,
   }) : super(key: key);
 
   final String image;
@@ -19,6 +22,9 @@ class CustomCardMovie extends StatelessWidget {
   final double vote;
   final Movie movie;
   final double height;
+  final String tag;
+
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +34,7 @@ class CustomCardMovie extends StatelessWidget {
       valueListenable: controller,
       builder: (context, active, child) {
         return InkWell(
-          onTap: () {
-            Modular.to.pushNamed('/movieDetailPage', arguments: movie);
-          },
+          onTap: onTap,
           child: Container(
             width: double.infinity,
             height: height,
@@ -49,15 +53,19 @@ class CustomCardMovie extends StatelessWidget {
                         topLeft: Radius.circular(8),
                         bottomLeft: Radius.circular(8),
                       ),
-                      child: CachedNetworkImage(
-                        imageUrl: 'https://image.tmdb.org/t/p/original$image',
-                        height: 130,
-                        width: 86,
-                        imageBuilder: (context, url) {
-                          return Image(
-                            image: url,
-                          );
-                        },
+                      child: Hero(
+                        tag: tag,
+                        child: CachedNetworkImage(
+                          imageUrl:
+                              'https://image.tmdb.org/t/p/original/$image',
+                          height: 130,
+                          width: 86,
+                          imageBuilder: (context, url) {
+                            return Image(
+                              image: url,
+                            );
+                          },
+                        ),
                       ),
                     ),
                     const SizedBox(width: 12),

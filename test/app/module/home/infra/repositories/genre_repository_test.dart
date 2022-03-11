@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:movie_app/app/modules/home/domain/entities/genre_entity.dart';
@@ -15,9 +16,8 @@ void main() {
 
   test('Deve retornar um medelo dos Generos', () async {
     when(() => datasource.getGenresFromNetwork())
-        .thenAnswer((_) async => genreMapper);
+        .thenAnswer((_) async => Right(genreMapper));
     final result = await repository.pickUpGenres();
-    expect(result, isA<List<Genre>>());
-    expect(result.length, 1);
+    expect(result.fold(id, id), isA<List<Genre>>());
   });
 }

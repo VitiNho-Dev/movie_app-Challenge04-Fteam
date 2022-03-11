@@ -6,14 +6,14 @@ import 'package:movie_app/app/modules/home/domain/usecases/get_movies_usecase.da
 import 'package:movie_app/app/modules/home/presenter/pages/home_page/triple/home_state.dart';
 
 class HomeStore extends NotifierStore<Failures, HomeState> {
-  final GetMovieUsecase movieUsecase;
   final IGetGenreUsecase genreUsecase;
+  final GetMovieUsecase movieUsecase;
 
-  HomeStore(this.movieUsecase, this.genreUsecase) : super(const HomeState());
+  HomeStore(this.genreUsecase, this.movieUsecase) : super(const HomeState());
 
   Future<void> getMovie() async {
     setLoading(true);
-    await Future.delayed(const Duration(seconds: 10));
+    await Future.delayed(const Duration(seconds: 5));
     final response = await movieUsecase();
     response.fold(
       (l) => setError(MovieDatasourceNoInternetConnection()),
@@ -24,6 +24,30 @@ class HomeStore extends NotifierStore<Failures, HomeState> {
         ));
       },
     );
+    setLoading(false);
+  }
+
+  Future<void> getMovieSearch(String title) async {
+    setLoading(true);
+    try {
+      if (title == '') {
+        update(state.copyWith(
+          listMoviesFiltered: state.listMovies,
+        ));
+        setLoading(false);
+        return;
+      }
+      final listFiltered = state.listMovies.where(
+        (element) => element.title.contains(title),
+      );
+      update(state.copyWith(
+        listMoviesFiltered: listFiltered.toList(),
+      ));
+    } on Failures catch (e) {
+      setError(MovieDatasourceNoInternetConnection(
+        message: e.toString(),
+      ));
+    }
     setLoading(false);
   }
 
@@ -53,26 +77,17 @@ class HomeStore extends NotifierStore<Failures, HomeState> {
 
   Future<void> getGenre() async {
     setLoading(true);
-    await Future.delayed(const Duration(seconds: 10));
-    try {
-      final response = await genreUsecase();
-      update(
-          state.copyWith(listGenre: [Genre(id: -1, name: 'All'), ...response]));
-    } on Failures catch (e) {
-      setError(MovieDatasourceNoInternetConnection(
-        message: e.toString(),
-      ));
-    }
-    setLoading(false);
-  }
-
-  Future<void> searchMovie(String text) async {
-    setLoading(true);
-    final response = await movieUsecase();
-    final result = response.map((e) => e);
-    final movie = response.fold(
-      (l) => MovieDatasourceNoInternetConnection(),
-      (r) => result,
+    await Future.delayed(const Duration(seconds: 5));
+    final response = await genreUsecase();
+    response.fold(
+      (l) => setError(MovieDatasourceNoInternetConnection()),
+      (r) {
+        update(
+          state.copyWith(
+            listGenre: [Genre(id: -1, name: 'All'), ...r],
+          ),
+        );
+      },
     );
     setLoading(false);
   }

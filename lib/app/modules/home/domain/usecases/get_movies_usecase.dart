@@ -14,6 +14,12 @@ class GetMovieUsecaseImpl implements GetMovieUsecase {
 
   @override
   Future<Either<Failures, List<Movie>>> call() async {
-    return await repository.getMovies();
+    final result = await repository.getMovies();
+    try {
+      return result;
+    } on Failures catch (e) {
+      MovieDatasourceNoInternetConnection(message: e.toString());
+    }
+    return result;
   }
 }

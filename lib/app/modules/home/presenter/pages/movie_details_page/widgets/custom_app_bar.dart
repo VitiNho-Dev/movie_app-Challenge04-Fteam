@@ -5,17 +5,22 @@ import 'package:movie_app/app/modules/home/presenter/pages/movie_details_page/wi
 class CustomAppBarDetailsPage extends StatelessWidget
     implements PreferredSizeWidget {
   final String urlImage;
+  final String tag;
 
   const CustomAppBarDetailsPage({
     Key? key,
     required this.urlImage,
+    required this.tag,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        CachedImageWidget(urlImage: urlImage),
+        Hero(
+          tag: tag,
+          child: CachedImageWidget(urlImage: urlImage),
+        ),
         Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(

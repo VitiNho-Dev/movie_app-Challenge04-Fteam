@@ -1,4 +1,5 @@
 class Movie {
+  final int id;
   final String title;
   final String posterPath;
   final String backdropPath;
@@ -8,6 +9,7 @@ class Movie {
   final List<int> genres;
 
   Movie({
+    required this.id,
     required this.title,
     required this.posterPath,
     required this.backdropPath,

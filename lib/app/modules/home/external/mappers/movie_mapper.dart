@@ -3,6 +3,7 @@ import 'package:movie_app/app/modules/home/domain/entities/movie_entity.dart';
 class MovieMapper {
   static Movie fromMap(Map<String, dynamic> json) {
     return Movie(
+      id: json['id'] ?? '',
       title: json['title'] ?? '',
       posterPath: json['poster_path'] ?? '',
       backdropPath: json['backdrop_path'] ?? '',

@@ -20,6 +20,7 @@ void main() {
       overview: '',
       releaseDate: '',
       genres: [],
+      id: 0,
     ),
   ];
 

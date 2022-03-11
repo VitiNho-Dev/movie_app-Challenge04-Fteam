@@ -19,19 +19,19 @@ int Scale(int source, double scale_factor) {
   return static_cast<int>(source * scale_factor);
 }
 
-// Dynamically loads the |EnableNonClientDpiScaling| from the User32 modules.
+// Dynamically loads the |EnableNonClientDpiScaling| from the User32 module.
 // This API is only needed for PerMonitor V1 awareness mode.
 void EnableFullDpiSupportIfAvailable(HWND hwnd) {
-  Hmodules user32_modules = LoadLibraryA("User32.dll");
-  if (!user32_modules) {
+  HMODULE user32_module = LoadLibraryA("User32.dll");
+  if (!user32_module) {
     return;
   }
   auto enable_non_client_dpi_scaling =
       reinterpret_cast<EnableNonClientDpiScaling*>(
-          GetProcAddress(user32_modules, "EnableNonClientDpiScaling"));
+          GetProcAddress(user32_module, "EnableNonClientDpiScaling"));
   if (enable_non_client_dpi_scaling != nullptr) {
     enable_non_client_dpi_scaling(hwnd);
-    FreeLibrary(user32_modules);
+    FreeLibrary(user32_module);
   }
 }
 
@@ -76,7 +76,7 @@ const wchar_t* WindowClassRegistrar::GetWindowClass() {
     window_class.style = CS_HREDRAW | CS_VREDRAW;
     window_class.cbClsExtra = 0;
     window_class.cbWndExtra = 0;
-    window_class.hInstance = GetmodulesHandle(nullptr);
+    window_class.hInstance = GetModuleHandle(nullptr);
     window_class.hIcon =
         LoadIcon(window_class.hInstance, MAKEINTRESOURCE(IDI_APP_ICON));
     window_class.hbrBackground = 0;
@@ -120,7 +120,7 @@ bool Win32Window::CreateAndShow(const std::wstring& title,
       window_class, title.c_str(), WS_OVERLAPPEDWINDOW | WS_VISIBLE,
       Scale(origin.x, scale_factor), Scale(origin.y, scale_factor),
       Scale(size.width, scale_factor), Scale(size.height, scale_factor),
-      nullptr, nullptr, GetmodulesHandle(nullptr), this);
+      nullptr, nullptr, GetModuleHandle(nullptr), this);
 
   if (!window) {
     return false;

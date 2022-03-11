@@ -23,7 +23,7 @@ class MovieDatasourceImpl implements MovieDatasource {
       }
       return Right(list);
     } on Failures catch (e) {
-      return Left(MovieDatasourceNoInternetConnection());
+      return Left(MovieDatasourceNoInternetConnection(message: e.toString()));
     }
   }
 }
