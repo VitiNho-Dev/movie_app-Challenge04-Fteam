@@ -16,7 +16,7 @@ class HomeStore extends NotifierStore<Failures, HomeState> {
     await Future.delayed(const Duration(seconds: 5));
     final response = await movieUsecase();
     response.fold(
-      (l) => setError(MovieDatasourceNoInternetConnection()),
+      (l) => setError(l),
       (r) {
         update(state.copyWith(
           listMovies: r,
@@ -80,7 +80,7 @@ class HomeStore extends NotifierStore<Failures, HomeState> {
     await Future.delayed(const Duration(seconds: 5));
     final response = await genreUsecase();
     response.fold(
-      (l) => setError(MovieDatasourceNoInternetConnection()),
+      (l) => setError(l),
       (r) {
         update(
           state.copyWith(

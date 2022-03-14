@@ -13,6 +13,7 @@ class CachedImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CachedNetworkImage(
       imageUrl: urlImage,
+      fit: BoxFit.fitWidth,
       placeholder: (context, url) {
         return Container();
       },

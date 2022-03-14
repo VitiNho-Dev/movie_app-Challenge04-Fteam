@@ -1,13 +1,21 @@
-abstract class Failures {}
-
-class MovieDatasourceNoInternetConnection implements Failures {
+abstract class Failures {
+  final StackTrace? stackTrace;
   final String message;
 
-  MovieDatasourceNoInternetConnection({this.message = ''});
+  Failures({
+    this.stackTrace,
+    required this.message,
+  });
 }
 
-class GenreDatasourceNoInternetConnection implements Failures {
-  final String message;
+class MovieDatasourceNoInternetConnection extends Failures {
+  MovieDatasourceNoInternetConnection(
+      {required String message, StackTrace? stackTrace})
+      : super(message: message, stackTrace: stackTrace);
+}
 
-  GenreDatasourceNoInternetConnection({this.message = ''});
+class GenreDatasourceNoInternetConnection extends Failures {
+  GenreDatasourceNoInternetConnection(
+      {required String message, StackTrace? stackTrace})
+      : super(message: message, stackTrace: stackTrace);
 }

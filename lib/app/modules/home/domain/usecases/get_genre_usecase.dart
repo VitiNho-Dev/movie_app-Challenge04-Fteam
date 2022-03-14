@@ -13,13 +13,12 @@ class GetGenreUsecase implements IGetGenreUsecase {
   GetGenreUsecase(this.repository);
 
   @override
-  Future<Either<Failures, List<Genre>>> call() {
-    final result = repository.pickUpGenres();
+  Future<Either<Failures, List<Genre>>> call() async {
     try {
+      final result = await repository.pickUpGenres();
       return result;
     } on Failures catch (e) {
-      GenreDatasourceNoInternetConnection(message: e.toString());
+      return Left(e);
     }
-    return result;
   }
 }

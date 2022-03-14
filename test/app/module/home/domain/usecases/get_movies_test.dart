@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:movie_app/app/modules/home/domain/entities/movie_entity.dart';
+import 'package:movie_app/app/modules/home/domain/errors/failures.dart';
 import 'package:movie_app/app/modules/home/domain/repositories/movie_repository.dart';
 import 'package:movie_app/app/modules/home/domain/usecases/get_movies_usecase.dart';
 
@@ -25,9 +26,15 @@ void main() {
   ];
 
   test('Deve trazer uma lista filme', () async {
-    when(() => repository.getMovies())
-        .thenAnswer((invocation) async => Right(movie));
+    when(() => repository.getMovies()).thenAnswer((_) async => Right(movie));
     final result = await usecase();
-    expect(result, isA<List<Movie>>());
+    expect(result.fold(id, id), isA<List<Movie>>());
+  });
+
+  test('Deve retornar um erro de conexão', () async {
+    when(() => repository.getMovies()).thenAnswer(
+        (_) async => Left(MovieDatasourceNoInternetConnection(message: '')));
+    final result = await usecase();
+    expect(result.fold(id, id), isA<MovieDatasourceNoInternetConnection>());
   });
 }

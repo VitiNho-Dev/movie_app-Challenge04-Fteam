@@ -40,7 +40,14 @@ class _HomePageState extends State<HomePage> {
       body: ScopedBuilder<HomeStore, Failures, HomeState>(
         store: store,
         onLoading: (context) => ShimmerWidget(),
-        onError: (context, error) => Text(error.toString()),
+        onError: (context, error) => const Center(
+          child: Text(
+            'Sem conexão',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+        ),
         onState: (context, HomeState state) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,8 +62,8 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 8),
-              Expanded(
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.08,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 4.0),
                   child: ListView.builder(
@@ -78,9 +85,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 8),
               Expanded(
-                flex: 9,
                 child: Padding(
                   padding: const EdgeInsets.only(
                     left: 12.0,

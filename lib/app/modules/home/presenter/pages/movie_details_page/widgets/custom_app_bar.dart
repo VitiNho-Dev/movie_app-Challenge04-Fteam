@@ -15,11 +15,16 @@ class CustomAppBarDetailsPage extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Stack(
       children: [
-        Hero(
-          tag: tag,
-          child: CachedImageWidget(urlImage: urlImage),
+        SizedBox(
+          width: double.infinity,
+          height: size.height * 0.5,
+          child: Hero(
+            tag: tag,
+            child: CachedImageWidget(urlImage: urlImage),
+          ),
         ),
         Container(
           decoration: const BoxDecoration(
@@ -51,5 +56,5 @@ class CustomAppBarDetailsPage extends StatelessWidget
   }
 
   @override
-  Size get preferredSize => const Size(double.infinity, 180);
+  Size get preferredSize => const Size(double.infinity, 160);
 }
