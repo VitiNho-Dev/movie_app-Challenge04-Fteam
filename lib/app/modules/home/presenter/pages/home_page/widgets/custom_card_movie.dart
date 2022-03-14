@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:movie_app/app/modules/home/domain/entities/movie_entity.dart';
 import 'package:movie_app/app/modules/home/presenter/pages/home_page/controllers/change_color.dart';
