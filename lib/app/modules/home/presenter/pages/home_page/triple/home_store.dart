@@ -44,9 +44,7 @@ class HomeStore extends NotifierStore<Failures, HomeState> {
         listMoviesFiltered: listFiltered.toList(),
       ));
     } on Failures catch (e) {
-      setError(MovieDatasourceNoInternetConnection(
-        message: e.toString(),
-      ));
+      setError(e);
     }
     setLoading(false);
   }
@@ -68,9 +66,7 @@ class HomeStore extends NotifierStore<Failures, HomeState> {
         listMoviesFiltered: listFiltered.toList(),
       ));
     } on Failures catch (e) {
-      setError(MovieDatasourceNoInternetConnection(
-        message: e.toString(),
-      ));
+      setError(e);
     }
     setLoading(false);
   }

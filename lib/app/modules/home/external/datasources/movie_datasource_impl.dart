@@ -15,15 +15,20 @@ class MovieDatasourceImpl implements MovieDatasource {
     try {
       final response = await client.getNetwork(
           'http://api.themoviedb.org/3/movie/popular?api_key=432ad0a10dd3abc7225d168001167d34');
-      final data = response.data as Map;
-      final results = data['results'] as List;
-      final List<Movie> list = [];
-      for (final item in results) {
-        list.add(MovieMapper.fromMap(item));
-      }
-      return Right(list);
+      return response.fold((l) {
+        return Left(MovieDatasourceNoInternetConnection(
+            message: 'Movie Datasource falhou $l'));
+      }, (r) {
+        final results = r.data['results'] as List;
+        final List<Movie> list = [];
+        for (final item in results) {
+          list.add(MovieMapper.fromMap(item));
+        }
+        return Right(list);
+      });
     } on Failures catch (e) {
-      return Left(MovieDatasourceNoInternetConnection(message: e.toString()));
+      return Left(MovieDatasourceNoInternetConnection(
+          message: 'Movie Datasource falhou $e'));
     }
   }
 }

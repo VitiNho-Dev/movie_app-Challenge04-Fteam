@@ -10,12 +10,12 @@ class GenreRepositoryImpl implements GenreRepository {
 
   @override
   Future<Either<Failures, List<Genre>>> pickUpGenres() async {
-    final result = await datasource.getGenresFromNetwork();
     try {
+      final result = await datasource.getGenresFromNetwork();
       return result;
     } on Failures catch (e) {
-      MovieDatasourceNoInternetConnection(message: e.toString());
+      return Left(
+          GenreRepositoryFailure(message: 'Genre repository falhou $e'));
     }
-    return result;
   }
 }

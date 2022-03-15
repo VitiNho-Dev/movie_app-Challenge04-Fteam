@@ -18,7 +18,7 @@ class GetMovieUsecaseImpl implements GetMovieUsecase {
       final result = await repository.getMovies();
       return result;
     } on Failures catch (e) {
-      return Left(e);
+      return Left(MovieUsecaseFailure(message: 'Movie usecase falhou $e'));
     }
   }
 }

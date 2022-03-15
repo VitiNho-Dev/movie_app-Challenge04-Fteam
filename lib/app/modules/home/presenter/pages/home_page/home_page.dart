@@ -40,10 +40,10 @@ class _HomePageState extends State<HomePage> {
       body: ScopedBuilder<HomeStore, Failures, HomeState>(
         store: store,
         onLoading: (context) => ShimmerWidget(),
-        onError: (context, error) => const Center(
+        onError: (context, error) => Center(
           child: Text(
-            'Sem conexão',
-            style: TextStyle(
+            error.toString(),
+            style: const TextStyle(
               color: Colors.white,
             ),
           ),

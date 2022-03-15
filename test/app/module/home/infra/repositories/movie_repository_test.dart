@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:movie_app/app/modules/home/domain/entities/movie_entity.dart';
+import 'package:movie_app/app/modules/home/domain/errors/failures.dart';
 import 'package:movie_app/app/modules/home/infra/datasources/movie_datasource.dart';
 import 'package:movie_app/app/modules/home/infra/repositories/movie_repository_impl.dart';
 
@@ -16,9 +17,17 @@ void main() {
 
   test('Deve retornar uma lista de filmes', () async {
     when(() => datasource.getMoviesFromNetwork())
-        .thenAnswer((invocation) async => Right(movieMapper));
+        .thenAnswer((_) async => Right(movieMapper));
     final result = await repository.getMovies();
     final value = result.fold(id, id);
     expect(value, isA<List<Movie>>());
+  });
+
+  test('Deve retornar um erro de repository', () async {
+    when(() => datasource.getMoviesFromNetwork())
+        .thenAnswer((_) async => Left(MovieRepositoryFailure(message: '')));
+    final result = await repository.getMovies();
+    final value = result.fold(id, id);
+    expect(value, isA<MovieRepositoryFailure>());
   });
 }

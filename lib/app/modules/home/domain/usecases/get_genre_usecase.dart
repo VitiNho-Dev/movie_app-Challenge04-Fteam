@@ -18,7 +18,7 @@ class GetGenreUsecase implements IGetGenreUsecase {
       final result = await repository.pickUpGenres();
       return result;
     } on Failures catch (e) {
-      return Left(e);
+      return Left(GenreUsecaseFailure(message: 'Genre usecase falhou $e'));
     }
   }
 }

@@ -31,10 +31,10 @@ void main() {
     expect(result.fold(id, id), isA<List<Movie>>());
   });
 
-  test('Deve retornar um erro de conexão', () async {
-    when(() => repository.getMovies()).thenAnswer(
-        (_) async => Left(MovieDatasourceNoInternetConnection(message: '')));
+  test('Deve retornar um erro de usecase', () async {
+    when(() => repository.getMovies())
+        .thenAnswer((_) async => Left(MovieUsecaseFailure(message: '')));
     final result = await usecase();
-    expect(result.fold(id, id), isA<MovieDatasourceNoInternetConnection>());
+    expect(result.fold(id, id), isA<MovieUsecaseFailure>());
   });
 }

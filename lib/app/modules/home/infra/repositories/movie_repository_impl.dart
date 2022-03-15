@@ -10,12 +10,12 @@ class MovieRepositoryImpl implements MovieRepository {
 
   @override
   Future<Either<Failures, List<Movie>>> getMovies() async {
-    final result = await datasource.getMoviesFromNetwork();
     try {
+      final result = await datasource.getMoviesFromNetwork();
       return result;
     } on Failures catch (e) {
-      MovieDatasourceNoInternetConnection(message: e.toString());
+      return Left(
+          MovieRepositoryFailure(message: 'Movie repository falhou $e'));
     }
-    return result;
   }
 }
