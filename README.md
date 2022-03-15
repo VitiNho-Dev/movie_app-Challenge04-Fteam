@@ -4,13 +4,14 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Quinto desafio da Fteam feito com Triple, Modular e Uno.
 
-A few resources to get you started if this is your first Flutter project:
+## Home Page
+<p align="left">
+  <img alt="CreateAccountPage" src="assets\home_page.png" width="25%">
+</p>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Detail Page
+<p align="left">
+  <img alt="CreateAccountPage" src="assets\details_page.png" width="25%">
+</p>
